@@ -30,11 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          if ($resDel) {
             header('Location: dispatch-letters.php');
            } else {
+            $_SESSION['dispatched'] = false;
             $_SESSION['notDispatch'] = true;
             header('Location: dispatch-letters.php');	
            }
 
          } else {
+            $_SESSION['dispatched'] = false;
             $_SESSION['fatalerror'] = true;
             header('Location: dispatch-letters.php');
          }	

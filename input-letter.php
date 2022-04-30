@@ -12,17 +12,22 @@
 	$res=mysqli_query($conn,"SELECT * FROM users WHERE userId=".$_SESSION['user']);
 	$userRow=mysqli_fetch_array($res);
     
-    //Checks to see if Form has been posted
+    //alert Handler
     if (isset($_SESSION['posted']) && $_SESSION['posted']) {
         unset($_SESSION['posted']);
     
         $errTyp = "success";
         $errMsg = "Your Letter has been successfully received";
-        unset($dateLetter);
-        unset($letterSub);
-        unset($dateOnLetter);
-        unset($registryNum);
-        unset($remark);
+        $errMsgIcon = "<i class=\"fa fa-check\"></i>";
+
+    }
+    if (isset($_SESSION['errorAlert']) && $_SESSION['errorAlert']) {
+        unset($_SESSION['errorAlert']);
+    
+        $errTyp = "danger";
+        $errMsg = "Database connection process failed";
+        $errMsgIcon = "<i class=\"ti-na\"></i>";
+
     }
      
 
@@ -139,7 +144,7 @@
                                 ?>
 				                    <div class="alert-dismiss" id="successAlert">
                                         <div class="alert alert-<?php echo ($errTyp=="success") ? "success" : $errTyp; ?> alert-dismissible fade show" role="alert">
-                                        <strong>Completed!</strong> <?php echo $errMsg; ?>
+                                        <strong>Completed!</strong> <?php echo $errMsg; ?> <?php echo $errMsgIcon; ?>
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa-times"></span>
                                         </button>
                                         </div>

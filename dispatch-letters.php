@@ -17,25 +17,29 @@
         unset($_SESSION['deleted']);
     
         $msgTyp = "info";
-        $msgBod = "Letter deleted successfully"; 
+        $msgBod = "Letter deleted successfully";
+        $msgIcon = "<i class=\"ti-trash\"></i>"; 
     }
     if (isset($_SESSION['dispatched']) && $_SESSION['dispatched']) {
         unset($_SESSION['dispatched']);
     
         $msgTyp = "success";
         $msgBod = "Letter has been successfully dispatched";
+        $msgIcon = "<i class=\"ti-truck\"></i>";
     }
     if (isset($_SESSION['notDispatch']) && $_SESSION['notDispatch']) {
         unset($_SESSION['notDispatch']);
     
         $msgTyp = "danger";
         $msgBod = "Letter Could not dispatch";
+        $msgIcon = "<i class=\"ti-na\"></i>";
     }
     if (isset($_SESSION['fatalerror']) && $_SESSION['fatalerror']) {
         unset($_SESSION['fatalerror']);
     
         $msgTyp = "danger";
         $msgBod = "Could not establish database process";
+        $msgIcon = "<i class=\"ti-na\"></i>";
     }
     
 ?>
@@ -152,7 +156,7 @@
                                 ?>
 				                    <div class="alert-dismiss" id="successAlert">
                                         <div class="alert alert-<?php echo ($msgTyp=="success") ? "success" : $msgTyp; ?> alert-dismissible fade show" role="alert">
-                                        <strong>Completed!</strong> <?php echo $msgBod; ?>
+                                        <strong>Completed!</strong> <?php echo $msgBod; ?> <?php echo $msgIcon; ?>
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa-times"></span>
                                         </button>
                                         </div>
@@ -365,7 +369,7 @@
     $(document).on("click", '#ModalConfirmDispatch button.dispatchConfirm', function(e) {
         e.preventDefault();
         var dispatchrowId = $(this).data('row-id');
-        alert (dispatchrowId);
+        
         document.getElementById("dispatchId").setAttribute('value', dispatchrowId);
     //    $('#ModalMessageDelete').modal('toggle');
         $('form#confirmDispatchForm').submit();

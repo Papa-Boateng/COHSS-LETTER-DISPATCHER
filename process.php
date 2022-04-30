@@ -16,8 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      if ($res) {
         header('Location: input-letter.php');
          } else {
-             $errTyp = "danger";
-             $errMsg = "Something went wrong, try again..";	
+            $_SESSION['posted'] = false;
+            $_SESSION['errorAlert'] = true;
+            header('Location: input-letter.php');
          }	
      exit;
  }

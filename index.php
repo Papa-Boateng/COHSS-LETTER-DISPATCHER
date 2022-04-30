@@ -120,11 +120,18 @@
                 <div class="sales-report-area mt-5 mb-5">
                     <div class="row">
                         <div class="col-md-3 mt-5 mb-3">
+                            <?php
+                            $numLettersReciv = mysqli_query($conn, "SELECT * FROM Received_letter");
+                            $numOfLettersIn = mysqli_num_rows ($numLettersReciv);
+                            $numLettersDispatch = mysqli_query($conn, "SELECT * FROM Dispatched_letters");
+                            $numofLettersOut = mysqli_num_rows ($numLettersDispatch);
+                            $totalNumLetters = $numOfLettersIn + $numofLettersOut;
+                            ?>
                             <div class="card">
                                 <div class="seo-fact sbg1">
                                     <div class="p-4 d-flex justify-content-between align-items-center">
                                         <div class="seofct-icon"><i class="ti-pencil-alt"></i> Received Letters</div>
-                                        <h2>315</h2>
+                                        <h2><?php echo $numOfLettersIn ?></h2>
                                     </div>
                                     <canvas id="seolinechart1" height="50"></canvas>
                                 </div>
@@ -135,7 +142,7 @@
                                 <div class="seo-fact sbg2">
                                     <div class="p-4 d-flex justify-content-between align-items-center">
                                         <div class="seofct-icon"><i class="ti-truck"></i> Dispatch Letters</div>
-                                        <h2>984</h2>
+                                        <h2><?php echo $numofLettersOut ?></h2>
                                     </div>
                                     <canvas id="seolinechart2" height="50"></canvas>
                                 </div>
@@ -146,7 +153,7 @@
                                 <div class="seo-fact sbg3">
                                     <div class="p-4 d-flex justify-content-between align-items-center">
                                         <div class="seofct-icon"><i class="ti-package"></i> Total Letters</div>
-                                        <h2>1,084</h2>
+                                        <h2><?php echo $totalNumLetters ?></h2>
                                     </div>
                                     <canvas id="seolinechart3" height="50"></canvas>
                                 </div>
@@ -168,110 +175,32 @@
                                             <tr>
                                                 <th>Date of received</th>
                                                 <th>Registry number</th>
-                                                <th>To whom received</th>
                                                 <th>Date of letter</th>
                                                 <th>Subject</th>
                                                 <th>Remarks</th>
+                                                <th>Status: </th>
                                             
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Airi Satou</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>33</td>
-                                                <td>2008/11/28</td>
-                                                <td>$162,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Angelica Ramos</td>
-                                                <td>Chief Executive Officer (CEO)</td>
-                                                <td>London</td>
-                                                <td>47</td>
-                                                <td>2009/10/09</td>
-                                                <td>$1,200,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td>San Francisco</td>
-                                                <td>66</td>
-                                                <td>2009/01/12</td>
-                                                <td>$86,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Bradley Greer</td>
-                                                <td>Software Engineer</td>
-                                                <td>London</td>
-                                                <td>41</td>
-                                                <td>2012/10/13</td>
-                                                <td>$132,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Brenden Wagner</td>
-                                                <td>Software Engineer</td>
-                                                <td>San Francisco</td>
-                                                <td>28</td>
-                                                <td>2011/06/07</td>
-                                                <td>$206,850</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Caesar Vance</td>
-                                                <td>Pre-Sales Support</td>
-                                                <td>New York</td>
-                                                <td>29</td>
-                                                <td>2011/12/12</td>
-                                                <td>$106,450</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Bruno Nash</td>
-                                                <td>Software Engineer</td>
-                                                <td>Edinburgh</td>
-                                                <td>21</td>
-                                                <td>2012/03/29</td>
-                                                <td>$433,060</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Bradley Greer</td>
-                                                <td>Software Engineer</td>
-                                                <td>London</td>
-                                                <td>41</td>
-                                                <td>2012/10/13</td>
-                                                <td>$132,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Brenden Wagner</td>
-                                                <td>Software Engineer</td>
-                                                <td>San Francisco</td>
-                                                <td>28</td>
-                                                <td>2011/06/07</td>
-                                                <td>$206,850</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Caesar Vance</td>
-                                                <td>Pre-Sales Support</td>
-                                                <td>New York</td>
-                                                <td>29</td>
-                                                <td>2011/12/12</td>
-                                                <td>$106,450</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Bruno Nash</td>
-                                                <td>Software Engineer</td>
-                                                <td>Edinburgh</td>
-                                                <td>21</td>
-                                                <td>2012/03/29</td>
-                                                <td>$433,060</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Bruno Mas</td>
-                                                <td>Software Engineer</td>
-                                                <td>Edinburgh</td>
-                                                <td>23</td>
-                                                <td>2013/03/29</td>
-                                                <td>$503,060</td>
-                                            </tr>
+                                        <?php
+                                               if( $numOfLettersIn ==0 ){
+                                                echo '<tr><td>No Letters Received</td></tr>';
+                                                }else{
+                                                while( $receiveRow = mysqli_fetch_assoc($numLettersReciv)){
+                                                  echo "<tr><td>{$receiveRow['DateOFLetter']}</td><td>{$receiveRow['RegistryNumber']}</td><td>{$receiveRow['LetterDate']}</td><td>{$receiveRow['Lsub']}</td><td>{$receiveRow['Remarks']}</td><td><span style=\"color: #5666ef;\">Received  <i class=\"ti-pencil-alt\"></i></span></td>
+                                                  </tr>\n";
+                                                }
+                                              }
+                                              if( $numofLettersOut ==0 ){
+                                                echo '<tr><td>No Letters Dispatched</td></tr>';
+                                                }else{
+                                                while( $dispatchedRow = mysqli_fetch_assoc($numLettersDispatch)){
+                                                  echo "<tr><td>{$dispatchedRow['DateOfReceived']}</td><td>{$dispatchedRow['RegistryNum']}</td><td>{$dispatchedRow['DateOnLetter']}</td><td>{$dispatchedRow['LetterSubject']}</td><td>{$dispatchedRow['RemarksSig']}</td><td><span style=\"color: #59bf99;\">Dispatched  <i class=\"ti-truck\"></i></span></td>
+                                                  </tr>\n";
+                                                }
+                                              }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>

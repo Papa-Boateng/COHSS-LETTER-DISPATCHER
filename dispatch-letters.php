@@ -17,10 +17,27 @@
         unset($_SESSION['deleted']);
     
         $msgTyp = "info";
-        $msgBod = "Letter deleted successfully";
-     //   unset($dateLetter);
-        
+        $msgBod = "Letter deleted successfully"; 
     }
+    if (isset($_SESSION['dispatched']) && $_SESSION['dispatched']) {
+        unset($_SESSION['dispatched']);
+    
+        $msgTyp = "success";
+        $msgBod = "Letter has been successfully dispatched";
+    }
+    if (isset($_SESSION['notDispatch']) && $_SESSION['notDispatch']) {
+        unset($_SESSION['notDispatch']);
+    
+        $msgTyp = "danger";
+        $msgBod = "Letter Could not dispatch";
+    }
+    if (isset($_SESSION['fatalerror']) && $_SESSION['fatalerror']) {
+        unset($_SESSION['fatalerror']);
+    
+        $msgTyp = "danger";
+        $msgBod = "Could not establish database process";
+    }
+    
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -239,106 +256,32 @@
                             <div class="card-body">
                                 <h4 class="header-title">Dispatched Letters</h4>
                                 <div class="data-tables datatable-dark">
+                                <?php
+                                        $letterDispatched = mysqli_query($conn, "SELECT * FROM Dispatched_letters");
+                                        $letterDisRes = mysqli_num_rows ($letterDispatched);
+                                        ?>
                                     <table id="dataTable3" class="text-center">
                                         <thead class="text-capitalize">
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start Date</th>
-                                                <th>salary</th>
+                                                <th>Date of received</th>
+                                                <th>Registry Number</th>
+                                                <th>To whom received</th>
+                                                <th>Date of letter</th>
+                                                <th>Subject</th>
+                                                <th>Remarks:</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Airi Satou</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>33</td>
-                                                <td>2008/11/28</td>
-                                                <td>$162,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Angelica Ramos</td>
-                                                <td>Chief Executive Officer (CEO)</td>
-                                                <td>London</td>
-                                                <td>47</td>
-                                                <td>2009/10/09</td>
-                                                <td>$1,200,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td>San Francisco</td>
-                                                <td>66</td>
-                                                <td>2009/01/12</td>
-                                                <td>$86,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Bradley Greer</td>
-                                                <td>Software Engineer</td>
-                                                <td>London</td>
-                                                <td>41</td>
-                                                <td>2012/10/13</td>
-                                                <td>$132,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Brenden Wagner</td>
-                                                <td>Software Engineer</td>
-                                                <td>San Francisco</td>
-                                                <td>28</td>
-                                                <td>2011/06/07</td>
-                                                <td>$206,850</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Caesar Vance</td>
-                                                <td>Pre-Sales Support</td>
-                                                <td>New York</td>
-                                                <td>29</td>
-                                                <td>2011/12/12</td>
-                                                <td>$106,450</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Bruno Nash</td>
-                                                <td>Software Engineer</td>
-                                                <td>Edinburgh</td>
-                                                <td>21</td>
-                                                <td>2012/03/29</td>
-                                                <td>$433,060</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Bradley Greer</td>
-                                                <td>Software Engineer</td>
-                                                <td>London</td>
-                                                <td>41</td>
-                                                <td>2012/10/13</td>
-                                                <td>$132,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Brenden Wagner</td>
-                                                <td>Software Engineer</td>
-                                                <td>San Francisco</td>
-                                                <td>28</td>
-                                                <td>2011/06/07</td>
-                                                <td>$206,850</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Caesar Vance</td>
-                                                <td>Pre-Sales Support</td>
-                                                <td>New York</td>
-                                                <td>29</td>
-                                                <td>2011/12/12</td>
-                                                <td>$106,450</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Bruno Nash</td>
-                                                <td>Software Engineer</td>
-                                                <td>Edinburgh</td>
-                                                <td>21</td>
-                                                <td>2012/03/29</td>
-                                                <td>$433,060</td>
-                                            </tr>
+                                        <?php
+                                               if( $letterDisRes ==0 ){
+                                                echo '<tr><th>No Rows Returned</th></tr>';
+                                                }else{
+                                                while( $dataDispatchRow = mysqli_fetch_assoc($letterDispatched)){
+                                                  echo "<tr><td>{$dataDispatchRow['DateOfReceived']}</td><td>{$dataDispatchRow['RegistryNum']}</td><td>{$dataDispatchRow['RecipientOfLetter']}</td><td>{$dataDispatchRow['DateOnLetter']}</td><td>{$dataDispatchRow['LetterSubject']}</td><td>{$dataDispatchRow['RemarksSig']}</td>
+                                                  </tr>\n";
+                                                }
+                                              }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>

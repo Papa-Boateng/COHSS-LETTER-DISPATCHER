@@ -30,13 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          if ($resDel) {
             header('Location: dispatch-letters.php');
            } else {
-            $errTyp = "danger";
-            $errMsg = "Something went wrong, try again..";	
+            $_SESSION['notDispatch'] = true;
+            header('Location: dispatch-letters.php');	
            }
 
          } else {
-             $errTyp = "danger";
-             $errMsg = "Something went wrong, try again..";	
+            $_SESSION['fatalerror'] = true;
+            header('Location: dispatch-letters.php');
          }	
          exit;
 

@@ -168,8 +168,8 @@
                                 <div class="modal fade" id="ModalMessageDelete">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Confirm Delete</h5>
+                                            <div class="modal-header list-group-item-warning">
+                                                <h5 class="modal-title" style="color: #444444;"><i class="fa fa-trash"></i> Confirm Delete: Letter[#<strong><span id="regg" name="regg"></span></strong>]</h5>
                                                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                                             </div>
                                             <div class="modal-body">
@@ -178,7 +178,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                                <button type="button" class="btn btn-primary delConfirm">Yes</button>
+                                                <button type="button" class="btn btn-danger delConfirm">Yes</button>
                                             </div>
                                         </div>
                                     </div>
@@ -186,8 +186,8 @@
                                 <div class="modal fade" id="ModalConfirmDispatch">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Confirm Dispatch</h5>
+                                            <div class="modal-header list-group-item-primary">
+                                                <h5 class="modal-title" style="color: #444444;"><i class="fa fa-truck"></i> Confirm Dispatch: Letter[#<strong><span id="dispatchh" name="dispatchh"></span></strong>]</h5>
                                                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                                             </div>
                                             <form action="dispatch_process.php" method="post" id="confirmDispatchForm" name="confirmDispatchForm" onsubmit="return javLiveform()" autocomplete="off">
@@ -346,7 +346,11 @@
         
         $(document).on('click','.delBtn',function() {
             var id = this.id;
+            var regNum = $(this).closest("tr");
+            var regNumAsc = regNum.find("th").text(); //registry number selector
+
             $('#ModalMessageDelete .delConfirm').data('row-id', id); //set data id
+            document.getElementById("regg").innerHTML = regNumAsc;
             
        });
 
@@ -363,6 +367,11 @@
     $(document).on('click','.dispatch',function() {
             var dispatchID = this.id;
             $('#ModalConfirmDispatch .dispatchConfirm').data('row-id', dispatchID); //set data id
+            var dispatchRegNum = $(this).closest("tr");
+            var dispatchRegNumAc = dispatchRegNum.find("th").text(); //dispatch letter number selector
+
+
+            document.getElementById("dispatchh").innerHTML = dispatchRegNumAc;
             
        });
 
@@ -374,6 +383,11 @@
     //    $('#ModalMessageDelete').modal('toggle');
         $('form#confirmDispatchForm').submit();
         
+    });
+
+    $('#ModalConfirmDispatch').on('hide.bs.modal', function (e) {
+        document.getElementById('ReciptEA').innerHTML = " ";
+        document.getElementById('ReciptEB').innerHTML = " ";
     });
 
 

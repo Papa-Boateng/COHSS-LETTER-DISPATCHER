@@ -56,6 +56,9 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
 
 </head>
 
@@ -171,30 +174,46 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xl-6">
-                                    <div class="form-group">
+                                        <div class="form-group">
                                             <label for="example-text-input" class="col-form-label">Letter Subject</label>
                                             <input class="form-control" type="text" id="LetterSubject" name ="Lsubject">
                                             <div class="text-danger"><span id="subjectError"></span></div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3">
+                                    <div class="col-xl-2">
                                         <div class="form-group">
                                             <label for="example-date-input" class="col-form-label">Registry Number</label>
-                                            <input class="form-control" type="number" id="RegNumber" name="RegistryNumber">
+                                            <input class="form-control" type="number" id="RegNumber" name="RegistryNumber" >
                                             <div class="text-danger"><span id="registryError"></span></div>
                                         </div> 
                                     </div>
-                                    <div class="col-xl-3">
-                                        <div class="form-group">
-                                            <label class="col-form-label">Remarks</label>
-                                            <select class="custom-select" name="remarks">
-                                                <option selected="selected">Select the following:</option>
-                                                <option value="Provost">Provost</option>
-                                                <option value="Registrar">Registrar</option>
-                                                <option value="Provost/Registrar">Provost / Registrar</option>
-                                            </select>
-                                        </div>    
-                                    </div>
+                                    
+                                    <div class="col-xl-4">    
+                                            <label class="col-form-label" for="remarks">Remarks</label>
+                                                <div class="input-group">
+                                                 <select class="custom-select" name="remarks">
+                                                    <option selected="selected">Select the following:</option>
+                                                    <option value="Provost">Provost</option>
+                                                    <option value="Registrar">Registrar</option>
+                                                    <option value="Provost/Registrar">Provost / Registrar</option>
+                                                    <option disabled role=separator> ───────────────</option>
+                                                 </select>
+                                                    <div class="input-group-append">
+                                                        <button type="button" class="btn btn-rounded btn-primary btn-sm mb-3" id="remarkSelection" name="remarkSelection">Add</button>
+                                                    </div>
+                                                </div>
+                                                <div class="input-group" id="newRemarks">
+                                                    <input class="form-control form-control-sm input-rounded col-sm-6" type="text" placeholder=".form-control-sm" maxlength="25">
+                                                    <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary btn-xs" type="button"><i class="fa fa-level-up"></i></button>
+                                                    </div>
+                                                </div>
+                                                
+                                              
+                                    </div> 
+                                    
+                                  
+                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-xl-6">
@@ -256,6 +275,16 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbeBYsZSDkbIyfUkoIw1Rt38eRQOQQU0o"></script>
     <!-- jquery latest version -->
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#newRemarks").hide();
+        });
+        $('#remarkSelection').on('click', function(e){
+
+          $("#newRemarks").toggle();
+        //  $(this).toggleClass('class1')
+        });
+    </script>
     <!-- bootstrap 4 js -->
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>

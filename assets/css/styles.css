@@ -2837,3 +2837,7 @@ table.dataTable thead td {
 .dispatchConfirm {
     color: white;
 }
+
+#newRemarks {
+    display: none;
+}

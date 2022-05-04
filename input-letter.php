@@ -157,13 +157,15 @@
                                     <div class="col-xl-6">
                                         <div class="form-group">
                                             <label for="example-date-input" class="col-form-label">Date Letter was Received</label>
-                                            <input class="form-control" type="date" value="2022-03-05" id="example-date-input" name="DateLetter">
+                                            <input class="form-control" type="date" value="" id="DateLetter" name="DateLetter">
+                                            <div class="text-danger"><span id="dtReceivedError"></span></div>
                                         </div>
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="form-group">
                                             <label for="example-date-input" class="col-form-label">Date on Letter</label>
-                                            <input class="form-control" type="date" value="2018-03-05" id="example-date-input2" name="DateOnLetter">
+                                            <input class="form-control" type="date" value="" id="DateOnLetter" name="DateOnLetter">
+                                            <div class="text-danger"><span id="dtLetterError"></span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +221,9 @@
     <script type="text/javascript">
     function validateForm(){
 	var LetterSub = document.forms["input-letter"]["LetterSubject"].value;
-    var RegistryNum = document.forms["input-letter"]["RegNumber"].value;        
+    var RegistryNum = document.forms["input-letter"]["RegNumber"].value;
+    var dateOfLetter = document.forms["input-letter"] ["DateLetter"].value;
+    var dateOnLetter = document.forms["input-letter"] ["DateOnLetter"].value;      
 
 	if (LetterSub.length<1) {
         document.getElementById('subjectError').innerHTML = " Please enter a Subject";
@@ -235,6 +239,14 @@
     }
     if (RegistryNum.length<5) {
         document.getElementById('registryError').innerHTML = " Registry number must be more than 5 characters";
+        return false;
+    }
+    if (dateOfLetter.length<1) {
+        document.getElementById('dtReceivedError').innerHTML = " Select a valid date for letter received";
+        return false;
+    }
+    if (dateOnLetter.length<1){
+        document.getElementById('dtLetterError').innerHTML = " Select a valid date on the letter";
         return false;
     }
 

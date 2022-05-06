@@ -111,6 +111,12 @@
             responsive: true
         });
     }
+    if ($('#dataTable4').length) {
+        $('#dataTable4').DataTable({
+            responsive: true,
+            "order": [[ 3, "desc" ]]
+        });
+    }
 
 
     /*================================

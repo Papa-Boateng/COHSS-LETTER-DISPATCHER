@@ -183,7 +183,7 @@
                                     <div class="col-xl-2">
                                         <div class="form-group">
                                             <label for="example-date-input" class="col-form-label">Registry Number</label>
-                                            <input class="form-control" type="number" id="RegNumber" name="RegistryNumber" >
+                                            <input class="form-control" type="number" id="RegNumber" name="RegistryNumber">
                                             <div class="text-danger"><span id="registryError"></span></div>
                                         </div> 
                                     </div>
@@ -293,7 +293,7 @@
             remarkselect.appendChild(remarkoption);
             document.getElementById('newremarkcache').value = "";
             document.getElementById('casheError').setAttribute('class', "text-success"); 
-            document.getElementById('casheError').innerHTML = "New Remark " + newRemarks + " added!";
+            document.getElementById('casheError').innerHTML = "New Remark " + "\"" +newRemarks + "\""+ " added!";
         
         }
         }

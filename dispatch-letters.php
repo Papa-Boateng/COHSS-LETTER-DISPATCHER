@@ -264,7 +264,7 @@
                                         $letterDispatched = mysqli_query($conn, "SELECT * FROM Dispatched_letters");
                                         $letterDisRes = mysqli_num_rows ($letterDispatched);
                                         ?>
-                                    <table id="dataTable3" class="text-center">
+                                    <table id="dataTable4" class="text-center">
                                         <thead class="text-capitalize">
                                             <tr>
                                                 <th>Date of received</th>

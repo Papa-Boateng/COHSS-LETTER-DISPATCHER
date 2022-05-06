@@ -191,7 +191,7 @@
                                     <div class="col-xl-4">    
                                             <label class="col-form-label" for="remarks">Remarks</label>
                                                 <div class="input-group">
-                                                 <select class="custom-select" name="remarks">
+                                                 <select class="custom-select" name="remarks" id="selecRemark">
                                                     <option selected="selected">Select the following:</option>
                                                     <option value="Provost">Provost</option>
                                                     <option value="Registrar">Registrar</option>
@@ -203,10 +203,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="input-group" id="newRemarks">
-                                                    <input class="form-control form-control-sm input-rounded col-sm-6" type="text" placeholder=".form-control-sm" maxlength="25">
+                                                    <input class="form-control form-control-sm input-rounded col-sm-6" type="text" id="newremarkcache" name="newremarkcache" placeholder="Add new remarks" maxlength="25">
                                                     <div class="input-group-append">
-                                                    <button class="btn btn-outline-secondary btn-xs" type="button"><i class="fa fa-level-up"></i></button>
+                                                    <button class="btn btn-outline-secondary btn-xs" type="button" onclick="submitnewRemark()"><i class="fa fa-level-up"></i></button>
                                                     </div>
+                                                    <span style="padding-left: 10px;" id="casheError"></span>
                                                 </div>
                                                 
                                               
@@ -270,20 +271,50 @@
     }
 
     }
+    function submitnewRemark() {
+        var remarkTeshcache = document.getElementById('newremarkcache').value;
+        if (remarkTeshcache.length<1) {
+            document.getElementById('casheError').setAttribute('class', "text-danger");
+            document.getElementById('casheError').innerHTML = "Please enter a remark";
+            return false;
+            
+        }
+        if (remarkTeshcache.length<4){
+            document.getElementById('casheError').setAttribute('class', "text-danger");
+            document.getElementById('casheError').innerHTML = "Invalid remark";
+            return false;
+            } 
+        else {
+            var remarkselect = document.getElementById('selecRemark');
+            var remarkoption = document.createElement('option');
+            var newRemarks = document.getElementById('newremarkcache').value;
+            remarkoption.appendChild(document.createTextNode(newRemarks));
+            remarkoption.value = newRemarks;
+            remarkselect.appendChild(remarkoption);
+            document.getElementById('newremarkcache').value = "";
+            document.getElementById('casheError').setAttribute('class', "text-success"); 
+            document.getElementById('casheError').innerHTML = "New Remark " + newRemarks + " added!";
+        
+        }
+        }
     </script>
     <!-- maps Resources -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbeBYsZSDkbIyfUkoIw1Rt38eRQOQQU0o"></script>
     <!-- jquery latest version -->
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+       $(document).ready(function() {
             $("#newRemarks").hide();
+            $("#casheError").html("");
+            $("#newremarkcache").val("");
         });
         $('#remarkSelection').on('click', function(e){
 
           $("#newRemarks").toggle();
+          $("#newremarkcache").val("");
+          $("#casheError").html("");
         //  $(this).toggleClass('class1')
-        });
+        }); 
     </script>
     <!-- bootstrap 4 js -->
     <script src="assets/js/popper.min.js"></script>

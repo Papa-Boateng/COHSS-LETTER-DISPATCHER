@@ -138,8 +138,9 @@
                     <div class="col-xl-12 mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="header-title">Input Letters</h3>
+                                <h3 class="header-title">Input Letters <i class="fa fa-pencil"></i></h3>
                                 <p class="text-muted font-14 mb-4">All incoming Letters go here:</p>
+                                <hr>
                                 <form name="input-letter" method="post" action="process.php" id="input-letter" onsubmit="return validateForm()" autocomplete="off">
                                 <?php
                                     if (isset($errMsg)){
@@ -199,7 +200,7 @@
                                                     <option disabled role=separator> ───────────────</option>
                                                  </select>
                                                     <div class="input-group-append">
-                                                        <button type="button" class="btn btn-rounded btn-primary btn-sm mb-3" id="remarkSelection" name="remarkSelection">Add</button>
+                                                        <button type="button" class="btn btn-rounded btn-dark btn-sm mb-3" id="remarkSelection" name="remarkSelection">Add</button>
                                                     </div>
                                                 </div>
                                                 <div class="input-group" id="newRemarks">

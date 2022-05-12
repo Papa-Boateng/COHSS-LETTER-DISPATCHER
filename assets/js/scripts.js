@@ -111,12 +111,40 @@
             responsive: true
         });
     }
-    if ($('#dataTable4').length) {
-        $('#dataTable4').DataTable({
+    if ($('#dataTable4').length) {        
+        var table=$('#dataTable4').DataTable({
             responsive: true,
-            "order": [[ 3, "desc" ]]
+            "order": [[ 0, "desc" ]],
+            dom: 'Bfrtip',
+            buttons: {
+                buttons: [
+                      { extend: 'print', className: 'btn btn-flat btn-primary'},
+                      {
+                        extend: 'spacer',
+                        style: 'bar',
+                        text: 'export data: '
+                    },
+                      { extend: 'excel', className: 'btn btn-flat btn-secondary'},
+                      { extend: 'pdf', className: 'btn btn-flat btn-secondary'},
+                      { extend: 'csv', className: 'btn btn-flat btn-secondary'}
+                         ],
+                 dom: {
+                    button: {
+                    className: 'btn'
+                       }
+                 }
+               }
+            
         });
+        $('#exportDispatchletters').html(table.buttons().container());
+        
     }
+
+          
+        
+        
+       
+    
 
 
     /*================================

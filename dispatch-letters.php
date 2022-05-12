@@ -63,6 +63,7 @@
     <!-- Start datatable css -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
     <!-- others css -->
@@ -164,7 +165,7 @@
                                 <?php
                                     }
                                 ?>
-                                <h4 class="header-title">Received Letters</h4>
+                                <h4 class="header-title">Received Letters <i class="fa fa-edit"></i></h4>
                                 <div class="modal fade" id="ModalMessageDelete">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -258,7 +259,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Dispatched Letters</h4>
+                                <h4 class="header-title">Dispatched Letters <i class="fa fa-truck"></i></h4>
                                 <div class="data-tables datatable-dark">
                                 <?php
                                         $letterDispatched = mysqli_query($conn, "SELECT * FROM Dispatched_letters");
@@ -293,6 +294,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Export table data <i class="fa fa-download"></i></h4>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <div id="exportDispatchletters"></div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <p>
+                                        Print or Save Dispatch letters data to the above formats.
+                                        </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- main content area end -->
@@ -309,8 +329,6 @@
     
     <!-- jquery latest version -->
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/additional-methods.min.js"></script>
     <script type="text/javascript">
     function javLiveform() {
         var Recipt = document.forms["confirmDispatchForm"]["reciptA"].value; 
@@ -388,11 +406,12 @@
     $('#ModalConfirmDispatch').on('hide.bs.modal', function (e) {
         document.getElementById('ReciptEA').innerHTML = " ";
         document.getElementById('ReciptEB').innerHTML = " ";
+        });
+
     });
-
-
-      });
+      
     </script>
+    
     <!-- bootstrap 4 js -->
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
@@ -401,9 +420,16 @@
     <script src="assets/js/jquery.slimscroll.min.js"></script>
     <script src="assets/js/jquery.slicknav.min.js"></script>
     <!-- Start datatable js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js" ></script>
     <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.colVis.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <!-- others plugins -->

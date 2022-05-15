@@ -2,7 +2,9 @@
 	ob_start();
 	session_start();
 	if( isset($_SESSION['user'])!="" ){
-		header("Location: index.php");
+		unset($_SESSION['user']);
+		session_unset();
+		session_destroy();
 	}
 	include_once 'dbconnect.php';
 

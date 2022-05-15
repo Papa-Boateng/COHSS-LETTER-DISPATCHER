@@ -92,6 +92,7 @@
                             </li>
                             <li class="active"><a href="input-letter.php"><i class="ti-import"></i> <span>Input Letter</span></a></li>
                             <li><a href="dispatch-letters.php"><i class="ti-truck"></i> <span>Dispatch Letters</span></a></li>
+                            <li><a href="user-settings.php"><i class="ti-settings"></i> <span>Settings</span></a></li>
                             <li><a href="logout.php?logout"><i class="ti-shift-right"></i> <span>Logout</span></a></li>
                         </ul>
                     </nav>
@@ -125,7 +126,7 @@
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $userRow['userName']; ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Settings</a>
+                                <a class="dropdown-item" href="user-settings.php">Settings</a>
                                 <a class="dropdown-item" href="logout.php?logout">Log Out</a>
                             </div>
                         </div>

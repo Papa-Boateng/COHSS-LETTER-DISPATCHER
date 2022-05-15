@@ -399,7 +399,6 @@
         var dispatchrowId = $(this).data('row-id');
         
         document.getElementById("dispatchId").setAttribute('value', dispatchrowId);
-    //    $('#ModalMessageDelete').modal('toggle');
         $('form#confirmDispatchForm').submit();
         
     });

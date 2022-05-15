@@ -201,7 +201,7 @@
                                                     <option disabled role=separator> ───────────────</option>
                                                  </select>
                                                     <div class="input-group-append">
-                                                        <button type="button" class="btn btn-rounded btn-dark btn-sm mb-3" id="remarkSelection" name="remarkSelection">Add</button>
+                                                        <button type="button" class="btn btn-rounded btn-secondary btn-sm mb-3" id="remarkSelection" name="remarkSelection">Add</button>
                                                     </div>
                                                 </div>
                                                 <div class="input-group" id="newRemarks">

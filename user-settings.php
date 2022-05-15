@@ -176,7 +176,7 @@
                                     </div>
                                     <div class="col-sm-3 my-1">
                                         <label class="sr-only" for="inlineFormInputName">Username</label>
-                                        <input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe" value="<?php echo $userRow['userName']; ?>" disabled>
+                                        <input type="text" class="form-control" id="settingsUsername" placeholder="Jane Doe" value="<?php echo $userRow['userName']; ?>" disabled>
                                     </div>
                                     <div class="col-sm-1 offset-sm-4">   
                                             <div class="form-group">
@@ -191,7 +191,7 @@
                                     </div>
                                     <div class="col-sm-3 my-1">
                                         <label class="sr-only" for="inlineFormInputName">Email</label>
-                                        <input type="email" class="form-control" id="inlineFormInputName" placeholder="Jane Doe" value="<?php echo $userRow['userEmail']; ?>" disabled>
+                                        <input type="email" class="form-control" id="settingsEmail" placeholder="Jane Doe" value="<?php echo $userRow['userEmail']; ?>" disabled>
                                     </div>
                                 </div>
                                 </form>

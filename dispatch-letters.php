@@ -237,7 +237,7 @@
                                             <tbody>
                                             <?php
                                                if( $letterResults ==0 ){
-                                                echo '<tr><th>No Rows Returned</th></tr>';
+                                                echo '<tr><th>No letters received</th></tr>';
                                                 }else{
                                                 while( $dataRow = mysqli_fetch_assoc($letterReceived)){
                                                   echo "<tr><th scope=\"row\">{$dataRow['RegistryNumber']}</th><td>{$dataRow['DateOFLetter']}</td><td>{$dataRow['Lsub']}</td><td>{$dataRow['LetterDate']}</td><td><a id=\"{$dataRow['LetterID']}\" class=\"delBtn\" data-toggle=\"modal\" data-target=\"#ModalMessageDelete\"><i class=\"ti-trash\"></i></a></td><td><button id=\"{$dataRow['LetterID']}\" class=\"btn btn-rounded btn-primary dispatch\" data-toggle=\"modal\" data-target=\"#ModalConfirmDispatch\"><i class=\"ti-truck\"></i> Dispatch</button></td>
@@ -280,7 +280,7 @@
                                         <tbody>
                                         <?php
                                                if( $letterDisRes ==0 ){
-                                                echo '<tr><th>No Rows Returned</th></tr>';
+                                                echo '<tr><th>No Dispatched Letters</th></tr>';
                                                 }else{
                                                 while( $dataDispatchRow = mysqli_fetch_assoc($letterDispatched)){
                                                   echo "<tr><td>{$dataDispatchRow['DateOfReceived']}</td><td>{$dataDispatchRow['RegistryNum']}</td><td>{$dataDispatchRow['RecipientOfLetter']}</td><td>{$dataDispatchRow['DateOnLetter']}</td><td>{$dataDispatchRow['LetterSubject']}</td><td>{$dataDispatchRow['RemarksSig']}</td>

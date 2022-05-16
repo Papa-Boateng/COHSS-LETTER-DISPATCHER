@@ -2825,15 +2825,15 @@ table.dataTable thead td {
 /*-------------------- END Offset Sidebar ------------------- */
 
 .delBtn {
-    color: red; 
+    display: block;
  }
 
  .delConfirm {
-    color: white;
+    display: block;
 }
 .dispatch {
-    color: white;
+    display: block;
 }
 .dispatchConfirm {
-    color: white;
+    display: block;
 }

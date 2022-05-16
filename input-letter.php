@@ -17,6 +17,7 @@
         unset($_SESSION['posted']);
     
         $errTyp = "success";
+        $errTitle = "Completed";
         $errMsg = "Your Letter has been successfully received";
         $errMsgIcon = "<i class=\"fa fa-check\"></i>";
 
@@ -25,7 +26,8 @@
         unset($_SESSION['errorAlert']);
     
         $errTyp = "danger";
-        $errMsg = "Database connection process failed";
+        $errTitle = "Error";
+        $errMsg = "Invalid characters included";
         $errMsgIcon = "<i class=\"ti-na\"></i>";
 
     }
@@ -149,7 +151,7 @@
                                 ?>
 				                    <div class="alert-dismiss" id="successAlert">
                                         <div class="alert alert-<?php echo ($errTyp=="success") ? "success" : $errTyp; ?> alert-dismissible fade show" role="alert">
-                                        <strong>Completed!</strong> <?php echo $errMsg; ?> <?php echo $errMsgIcon; ?>
+                                        <strong><?php echo $errTitle?>!</strong> <?php echo $errMsg; ?> <?php echo $errMsgIcon; ?>
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa-times"></span>
                                         </button>
                                         </div>

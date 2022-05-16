@@ -17,6 +17,7 @@
         unset($_SESSION['deleted']);
     
         $msgTyp = "info";
+        $msgTitle = "Completed";
         $msgBod = "Letter deleted successfully";
         $msgIcon = "<i class=\"ti-trash\"></i>"; 
     }
@@ -24,6 +25,7 @@
         unset($_SESSION['dispatched']);
     
         $msgTyp = "success";
+        $msgTitle = "Completed";
         $msgBod = "Letter has been successfully dispatched";
         $msgIcon = "<i class=\"ti-truck\"></i>";
     }
@@ -31,6 +33,7 @@
         unset($_SESSION['notDispatch']);
     
         $msgTyp = "danger";
+        $msgTitle = "Error";
         $msgBod = "Letter Could not dispatch";
         $msgIcon = "<i class=\"ti-na\"></i>";
     }
@@ -38,7 +41,8 @@
         unset($_SESSION['fatalerror']);
     
         $msgTyp = "danger";
-        $msgBod = "Could not establish database process";
+        $msgTitle = "Error";
+        $msgBod = "Invalid character for recipient entered";
         $msgIcon = "<i class=\"ti-na\"></i>";
     }
     
@@ -158,7 +162,7 @@
                                 ?>
 				                    <div class="alert-dismiss" id="successAlert">
                                         <div class="alert alert-<?php echo ($msgTyp=="success") ? "success" : $msgTyp; ?> alert-dismissible fade show" role="alert">
-                                        <strong>Completed!</strong> <?php echo $msgBod; ?> <?php echo $msgIcon; ?>
+                                        <strong><?php echo $msgTitle?>!</strong> <?php echo $msgBod; ?> <?php echo $msgIcon; ?>
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa-times"></span>
                                         </button>
                                         </div>
